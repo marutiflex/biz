@@ -4,243 +4,414 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/c64cf4433d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <title>BIZ App</title>
-    <link rel="icon" type="image/x-icon"
-        href="https://raw.githubusercontent.com/marutiflex/script/refs/heads/main/Logo%2031_07_2023%20.jpg">
-        <script src="https://kit.fontawesome.com/c64cf4433d.js" crossorigin="anonymous"></script>
 </head>
 
-
-    
-
 <body>
-    <div id="login-page">
-        <div class="login-container">
-            <img style="width: 80px;"
-                src="https://raw.githubusercontent.com/marutiflex/script/refs/heads/main/Logo%2031_07_2023%20.jpg"
-                alt=" ">
-            <h2>Maruti Flex Traders LLP</h2>
-            <form id="login-form">
-                <input type="number" id="login-id" placeholder="Login ID" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <button type="submit" onclick="loginPage()">Submit</button>
+    <div class="login-Container">
+        <div class="login-box">
+            <form id="loginForm">
+                <div class="login-Header">
+                    <h2>Telecall Login</h2>
+                </div>
+                <div class="logo-company">
+                    <img src="https://raw.githubusercontent.com/marutiflex/script/refs/heads/main/logo%20png.png">
+                    <h3>Maruti Flex Traders LLP</h3>
+                </div>
+                <div class="user-log-content">
+                    <label for="userID">User ID</label>
+                    <input type="number" required id="userID">
+                </div>
+                <div class="user-log-content">
+                    <label for="password">Password</label>
+                    <input type="password" required id="password">
+                </div>
+                <span id="login-Message" style="display: none;">Wrong credentials!</span>
+                <div class="user-log-content">
+                    <input type="submit" value="Submit">
+                </div>
             </form>
         </div>
     </div>
-    <header id="header" class="hidden"> 
-        <div class="user-details" onclick="lououtOption()">
-            <i class="fa-solid fa-user"></i> Murari Saraf (<span id="currentBranch"></span>) <p id="loginidStore" style="display: none;" hidden></p>
+    <main style="display: none;">
+        <!-- Menu Login info -->
+        <div class="login-info-menu" style="left: -250px;">
+            <div class="login-info-header">
+                <p>New & Lost Client dashboard</p>
+                <!-- <p><i class="fa-solid fa-xmark"></i></p> -->
+            </div>
+            <div class="login-info-details">
+                <div class="login-info-user-details">
+                    <p><i class="fa-solid fa-user"></i> Name : </p>
+                    <p>Rabindra Kumar Sahoo</p>
+                </div>
+                <div class="login-info-user-details">
+                    <p><i class="fa-solid fa-location-dot"></i> Branch : </p>
+                    <p>Bangalore</p>
+                </div>
+                <div class="login-info-user-details">
+                    <p><i class="fa-solid fa-gear"></i> Role : </p>
+                    <p>Sales Executives</p>
+                </div>
+            </div>
+            <div class="login-info-logout">
+                <div class="login-info-users-logout">
+                    <button>Logout <i class="fa-solid fa-power-off"></i></button>
+                </div>
+            </div>
         </div>
-        <div class="branches">
+        <!-- Filter Container -->
+        <div class="filter-container" style="right: -250px;">
+            <div class="filter-Section" id="planning-page-filter">
+                <div class="filter-container-Header">
+                    <p><i onclick="OpenFilter()" class="fa-solid fa-arrow-right"></i></p>
+                    <h3>Filter</h3>
+                </div>
+                <div class="filter-container-divs">
+                    <label for="PartyNamefilterplanning">Party Name</label>
+                    <input type="text" id="PartyNamefilterplanning">
+                </div>
+                <div class="filter-container-divs">
+                    <label for="CurrentStatusfilterplanning">Current Status</label>
+                    <select name="CurrentStatusfilterplanning" id="CurrentStatusfilterplanning">
+                        <option value=""></option>
+                        <option>Required Later</option>
+                        <option>Not Interested</option>
+                        <option>Lead Dead</option>
+                        <option>Could not Contact</option>
+                    </select>
+                </div>
+                <div class="filter-container-divs">
+                    <label for="priorityfilterplanning">Current Status</label>
+                    <select name="priorityfilterplanning" id="priorityfilterplanning">
+                        <option value=""></option>
+                        <option>Today</option>
+                        <option>Yesterday</option>
+                        <option>Last 3 Days</option>
+                        <option>Tomorrow</option>
+                        <option>This Week</option>
+                        <option>Next Week</option>
+                        <option>This Month</option>
+                        <option>Upcoming</option>
+                    </select>
+                </div>
+
+                <div class="filterr-button">
+                    <button>Reset</button>
+                    <button>Done</button>
+                </div>
+            </div>
+            <div class="filter-Section" id="history-page-filter" style="display: none;">
+                <div class="filter-container-Header">
+                    <p><i onclick="OpenFilter()" class="fa-solid fa-arrow-right"></i></p>
+                    <h3>Filter</h3>
+                </div>
+                <div class="filter-container-divs">
+                    <label for="PartyNamefilterhistory">Party Name</label>
+                    <input type="text" id="PartyNamefilterhistory">
+                </div>
+                <div class="filter-container-divs">
+                    <label for="CurrentStatusfilterhistory">Current Status</label>
+                    <select name="CurrentStatusfilterhistory" id="CurrentStatusfilterhistory">
+                        <option value=""></option>
+                        <option>Required Later</option>
+                        <option>Not Interested</option>
+                        <option>Lead Dead</option>
+                        <option>Could not Contact</option>
+                    </select>
+                </div>
+                <div class="filter-container-divs">
+                    <label for="priorityfilterhistory">Current Status</label>
+                    <select name="priorityfilterhistory" id="priorityfilterhistory">
+                        <option value=""></option>
+                        <option>Today</option>
+                        <option>Yesterday</option>
+                        <option>This Week</option>
+                        <option>Last Week</option>
+                        <option>This Month</option>
+                        <option>Last Month</option>
+                    </select>
+                </div>
+
+                <div class="filterr-button">
+                    <button>Reset</button>
+                    <button>Done</button>
+                </div>
+            </div>
+        </div>
+        <!-- Menulist -->
+        <div class="menu">
             <ul>
-                <li><a href="#" onclick="migrateDatabase('Bangalore')">Bangalore</a></li>
-                <li><a href="#" onclick="migrateDatabase('Mangalore')">Mangalore</a></li>
-                <li><a href="#" onclick="migrateDatabase('Madurai')">Madurai</a></li>
-                <li><a href="#" onclick="migrateDatabase('Kolkata')">Kolkata</a></li>
-                <li><a href="#" onclick="migrateDatabase('Dullapally')">Dullapally</a></li>
-                <li><a href="#" onclick="migrateDatabase('Jaipur')">Jaipur</a></li>
-                <li><a href="#" onclick="migrateDatabase('Goregaon')">Goregaon</a></li>
-                <li><a href="#" onclick="migrateDatabase('Bhiwandi')">Bhiwandi</a></li>
-                <i class="fa-solid fa-xmark" onclick="CloseMenu(0)"></i>
+                <li onclick="NavPages('planning-page')" id="planning-page_menu_nav" class="active"><a
+                        href="#">Planning</a></li>
+                <li onclick="NavPages('history-page')" id="history-page_menu_nav"><a href="#">History</a></li>
             </ul>
-            <ul>
-                <li><a href="#" onclick="showStockListPage()">Current Stock</a></li>
-                <li><a href="#" onclick="showCollectionPage()">Collection</a></li>
-                <li><a href="#">Coll. Party Wise</a></li>
-                <li><a href="#">Collection Summary</a></li>
-                <i class="fa-solid fa-xmark" onclick="CloseMenu(1)"></i>
-            </ul>
-            <i class="fa-solid fa-shop" onclick="OpenMenu()"></i>
-            <i class="fa-solid fa-chart-bar" onclick="OpenMenuAnalysisMenu()"></i>
         </div>
-        
-    </header>
-    
-
-    <div class="container" id="container" class="hidden">
-
-        <div id="stock-list-page" style="display: none;" class="stock-list-page">
-            <div class="page-title"><u>Stock List</u></div>
-            <input type="text" id="category-dropdown" list="stocklistdata" placeholder="Category">
-            <datalist id="stocklistdata">
-                <option value="all">
-                <option value="electronics">
-                <option value="furniture">
-                <option value="clothing">
-            </datalist>
-            <input type="text" id="stock-search" placeholder="Search Item Description...">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Category</th>
-                        <th>Item Description</th>
-                        <th>Quantity</th>
-                        <th>Alternate Quantity</th>
-                        <th>Value</th>
-                    </tr>
-                </thead>
-                <tbody id="stock-list-table">
-                    <tr>
-                        <td>Electronics</td>
-                        <td>Smartphone</td>
-                        <td>150</td>
-                        <td>200</td>
-                        <td>$1000</td>
-                    </tr>
-                    <tr>
-                        <td>Furniture</td>
-                        <td>Couch</td>
-                        <td>30</td>
-                        <td>40</td>
-                        <td>$500</td>
-                    </tr>
-                    <tr>
-                        <td>Clothing</td>
-                        <td>T-Shirt</td>
-                        <td>200</td>
-                        <td>250</td>
-                        <td>$20</td>
-                    </tr>
-                    <tr>
-                        <td>Electronics</td>
-                        <td>Laptop</td>
-                        <td>50</td>
-                        <td>60</td>
-                        <td>$1500</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-            <!-- collection -->
-        <div id="collection-page" style="display: none;" class="collection-page">
-            <div class="page-title"><u>Collection</u></div>
-            <input type="text" id="collection-search" placeholder="Search Party Name..." list="PartyList" oninput="showCollectionofParty()">
-            <datalist id="PartyList">
-                <option value="ABC Printer & Designer">
-                <option value="Sunrise Solutions">
-                <option value="Global Ventures">
-                <option value="Alpha Tech">
-                <option value="Bright Future">
-                <option value="Zenith Industries">
-                <option value="Infinity Group">
-                <option value="Stellar Enterprises">
-                <option  value="Titan Solutions">
-                <option value="Prime Ventures">
-                <option value="Orbit Enterprises">
-            </datalist>
-                        
-            <table  class="desktop-view">
-                <thead >
-                    <tr >
-                        <th >Party Name</th>
-                        <th >Sales Executive</th>
-                        <th >Total Dues</th>
-                        <th >This week target</th>
-                        <th >Ach % </th>
-                        <th >Overdue</th>
-                    </tr>
-                </thead>
-                <tbody id="collection-table">
-                    
-                </tbody>
-            </table>
-
-            <div id="collection-tabs"  class="mobile-view">
-                
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <p onclick="OpenloginInfoMenu()"><i class="fa-solid fa-bars"></i></p>
+                <p id="pageName">Planning Report</p></i>
             </div>
+            <div class="header-right"><i class="fa-solid fa-rotate" onclick="FetchData()"></i><i onclick="OpenFilter()"
+                    class="fa-solid fa-filter"></i> </div>
         </div>
-        <div class="Collection-Party-wise" style="display: none;">
-            
-        </div>
-    </div>
+        <!-- Content -->
+        <div class="content">
+            <div class="planning-page" id="planning-page">
 
-    <div id="info-modal" class="modal hidden">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 id="modal-party-name"></h3>
-            <p id="modal-total-due"></p>
-            <p id="modal-serious-overdue"></p>
-            <p id="modal-overdue"></p>
-            <p id="modal-due-this-period"></p>
-            <p id="modal-due-next-week"></p>
-            <p id="modal-upcoming"></p>
-            <p id="modal-mobile-number"></p>
-            <p id="modal-target-of-the-week" class="highlighterBlue"></p>
-            <p id="modal-collection-against-target"  class="highlighterBlue"></p>
-            <p id="modal-collection-without-target"></p>
-            <p id="modal-Ach" class="highlighterBlue"></p>
-            <p id="lastConversation">Last Conversation : <span>Spoke to Client He will give payment by Next week (09-01-2024)</span> </p>
-            <div class="submit">
-                <input type="text" class="followup-remarks" value="" placeholder="Followup Remarks if any">
-             <button class="followup-btn" type="submit">Submit</button>
+                <div class="Container-details">
+                    <div class="Container-top">
+                        <div class="Container-top-left">
+                            <p>Xyz Company : Yogesh</p>
+                        </div>
+                        <div class="Container-top-right">
+                            <p onclick="updateForm('TrackingID')"><i class="fa-solid fa-square-pen"></i></p>
+                        </div>
+                    </div>
+                    <div class="Container-bottom">
+                        <div class="Container-bottom-left">
+                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
+                            <p><i class="fa-solid fa-phone"></i></p>
+                            <p><i class="fa-brands fa-square-whatsapp"></i></p>
+                            <p>15-June-2025</p>
+                        </div>
+                        <div class="Container-bottom-right">
+                            <p>Required Later</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="Container-details">
+                    <div class="Container-top">
+                        <div class="Container-top-left">
+                            <p>Xyz Company : Yogesh</p>
+                        </div>
+                        <div class="Container-top-right">
+                            <p onclick="updateForm('TrackingID')"><i class="fa-solid fa-square-pen"></i></p>
+                        </div>
+                    </div>
+                    <div class="Container-bottom">
+                        <div class="Container-bottom-left">
+                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
+                            <p><i class="fa-solid fa-phone"></i></p>
+                            <p><i class="fa-brands fa-square-whatsapp"></i></p>
+                            <p>15-June-2025</p>
+                        </div>
+                        <div class="Container-bottom-right">
+                            <p>Required Later</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="Container-details">
+                    <div class="Container-top">
+                        <div class="Container-top-left">
+                            <p>Xyz Company : Yogesh</p>
+                        </div>
+                        <div class="Container-top-right">
+                            <p onclick="updateForm('TrackingID')"><i class="fa-solid fa-square-pen"></i></p>
+                        </div>
+                    </div>
+                    <div class="Container-bottom">
+                        <div class="Container-bottom-left">
+                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
+                            <p><i class="fa-solid fa-phone"></i></p>
+                            <p><i class="fa-brands fa-square-whatsapp"></i></p>
+                            <p>15-June-2025</p>
+                        </div>
+                        <div class="Container-bottom-right">
+                            <p>Required Later</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div> <!--  planning-page close Here -->
+            <div class="history-page" id="history-page" style="display: none;">
+                <div class="Container-details">
+                    <div class="Container-top">
+                        <div class="Container-top-left">
+                            <p>Xyz Company : Yogesh</p>
+                        </div>
+                        <div class="Container-top-right">
+                            <p>Call</p>
+                        </div>
+                    </div>
+                    <div class="Container-bottom">
+                        <div class="Container-bottom-left">
+                            <p>15-June-2025</p>
+                            <p>16-June-2025</p>
+                            <p>Required Later</p>
+                        </div>
+                        <div class="Container-bottom-right">
+                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
+                        </div>
+                    </div>
+                    <div class="container-conversation">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, a?Lorem ipsum dolor sit amet.
+                        </p>
+                    </div>
+                </div>
+                <div class="Container-details">
+                    <div class="Container-top">
+                        <div class="Container-top-left">
+                            <p>Abc Company : Karthik</p>
+                        </div>
+                        <div class="Container-top-right">
+                            <p>Call</p>
+                        </div>
+                    </div>
+                    <div class="Container-bottom">
+                        <div class="Container-bottom-left">
+                            <p>15-June-2025</p>
+                            <p>16-June-2025</p>
+                            <p>Required Later</p>
+                        </div>
+                        <div class="Container-bottom-right">
+                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
+                        </div>
+                    </div>
+                    <div class="container-conversation">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, a?Lorem ipsum dolor sit amet.
+                        </p>
+                    </div>
+                </div>
+                <div class="Container-details">
+                    <div class="Container-top">
+                        <div class="Container-top-left">
+                            <p>Mnc Company : Yogesh</p>
+                        </div>
+                        <div class="Container-top-right">
+                            <p>Call</p>
+                        </div>
+                    </div>
+                    <div class="Container-bottom">
+                        <div class="Container-bottom-left">
+                            <p>15-June-2025</p>
+                            <p>16-June-2025</p>
+                            <p>Lead Dead</p>
+                        </div>
+                        <div class="Container-bottom-right">
+                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
+                        </div>
+                    </div>
+                    <div class="container-conversation">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, a?Lorem ipsum dolor sit amet.
+                        </p>
+                    </div>
+                </div>
+                <div class="Container-details">
+                    <div class="Container-top">
+                        <div class="Container-top-left">
+                            <p>Pqr Company : Yogesh</p>
+                        </div>
+                        <div class="Container-top-right">
+                            <p>Call</p>
+                        </div>
+                    </div>
+                    <div class="Container-bottom">
+                        <div class="Container-bottom-left">
+                            <p>15-June-2025</p>
+                            <p>16-June-2025</p>
+                            <p>Not Interested</p>
+                        </div>
+                        <div class="Container-bottom-right">
+                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
+                        </div>
+                    </div>
+                    <div class="container-conversation">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, a?Lorem ipsum dolor sit amet.
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div> <!--  History-page close Here -->
+        </div>
+    </main>
+    <div class="modal-Box" style="left: -100dvh;">
+        <div class="modal-container" id="planning-Container-info">
+            <div class="modal-content-header">
+                <h3>Pqr Company</h3>
             </div>
-            <p id="invoiceDetails"></p>
-        </div>
-    </div>
-    <div class="bill-wise-details-modal  hidden">
-        <a href="#" onclick="CloseInvoiceTable()"><i class="fa-regular fa-circle-xmark"></i> Close This Tab</a>
-        <table class="bill-wise-data">
-            <thead>
-                <tr>
-                    <th>Date</th>
-                    <th>Invoice No</th>
-                    <th>Party Name</th>
-                    <th>Group name</th>
-                    <th>Invoice Value</th>
-                    <th>Receipt</th>
-                    <th>Pending Value</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-            </tbody>
-        </table>
-    </div>
-    <div class="collection-details-modal-box">
-        <div class="box-collection-pattern">
-            <a href="#" onclick="close_collection_details_modal()">&times;</a>
-            <div class="collection-details-header">
-                <p>Details of the Week</p>
+            <div class="modal-content-details">
+                <div class="modal-content-data">
+                    <label><i class="fa-solid fa-phone"></i> Contact : </label>
+                    <p>9113075249</p>
+                </div>
+                <div class="modal-content-data">
+                    <label><i class="fa-solid fa-circle-chevron-right"></i> Current Status : </label>
+                    <p>Required Later</p>
+                </div>
+                <div class="modal-content-data">
+                    <label><i class="fa-solid fa-star"></i> Priority : </label>
+                    <p>1st Priority</p>
+                </div>
+                <div class="modal-content-data">
+                    <label><i class="fa-solid fa-gear"></i> Lead Type : </label>
+                    <p>Lost</p>
+                </div>
+                <div class="modal-content-data">
+                    <label><i class="fa-solid fa-calendar-days"></i> Last Contact : </label>
+                    <p>15-May-2025</p>
+                </div>
+                <div class="modal-content-data">
+                    <label><i class="fa-solid fa-headphones"></i> Conversation : </label>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aliquam nisi, autem nulla vel
+                        porro magni natus eveniet incidunt a?</p>
+                </div>
+                <div class="modal-content-data">
+                    <label><i class="fa-solid fa-location-dot"></i> Address : </label>
+                    <p>FLOOR -1, 6-A1, GANDHI NAGAR, DAINIK SHIVNERI MARG, WORLI, MUMBAI, Mumbai, Maharashtra, 400018
+                    </p>
+                </div>
             </div>
-            <table>
-                <tbody>
-                    <tr>
-                        <th>Target of the Week</th>
-                        <td>100000</td>
-                    </tr>
-                    <tr>
-                        <th>collection against Target</th>
-                        <td>35000</td>
-                    </tr>
-                    <tr>
-                        <th>Colletion without target</th>
-                        <td>15000</td>
-                    </tr>
-                    <tr>
-                        <th>Achievement %</th>
-                        <td>35%</td>
-                    </tr>
-                    <tr>
-                        <th>Pending to achieve</th>
-                        <td>65000</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div onclick="updateForm('TrackingID')" class="update-modal"><button>Update</button></div>
+            <div onclick="closeModal()" class="close-modal"><i class="fa-solid fa-xmark"></i></div>
         </div>
     </div>
-    <div id="louout-page" class="modal-page" style="display:none;">
-        <div class="logout-box">
-          <h3 id="logout-Message">Are You Sure to Logout ?</h3>
-          <div class="logout-options">
-            <a href="#" onclick="LogoutRejected()">No</a>
-            <a href="#" onclick="LogoutAggreed()">Yes</a>
-          </div>
+    <div class="modal-Box" style="left: -100dvh;">
+        <div class="modal-container" id="formUpdate">
+            <form>
+                <div class="modal-content-header">
+                    <h3>Pqr Company</h3>
+                </div>
+                <div class="modal-content-details">
+                    <div class="form-update-container">
+                        <label for="status_update">Status</label>
+                        <select name="status_update" required id="status_update">
+                            <option value=""></option>
+                            <option>Lead Generated</option>
+                            <option>Lead Converted</option>
+                            <option>Could not Contact</option>
+                            <option>Required Later</option>
+                            <option>Lead Dead</option>
+                        </select>
+                    </div>
+                    <div class="form-update-container">
+                        <label for="Contact_type_update">Contact Type</label>
+                        <select name="Contact_type_update" required id="Contact_type_update">
+                            <option>Call</option>
+                            <option>Visit</option>
+                        </select>
+                    </div>
+                    <div class="form-update-container">
+                        <label for="Conversation_update">Conversation</label>
+                        <textarea name="Conversation_update" required id="Conversation_update"></textarea>
+                    </div>
+                    <div class="form-update-container">
+                        <label for="nextFollowup_update">Next Followup</label>
+                        <input type="date" id="nextFollowup_update" required min="2025-06-19" max="2025-06-29">
+                    </div>
+                </div>
+                <div class="update-modal"><button type="submit">Submit</button></div>
+                <div onclick="closeModal()" class="close-modal"><i class="fa-solid fa-xmark"></i></div>
+            </form>
         </div>
-      </div>
+    </div>
     <script src="script.js"></script>
-
 </body>
 
 </html>
