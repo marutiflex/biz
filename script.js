@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+    console.log(window.innerWidth)
     if (window.innerWidth > 950) {
         document.body.innerHTML = "";
 
