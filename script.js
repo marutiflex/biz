@@ -1,3 +1,15 @@
+document.addEventListener("DOMContentLoaded", function () {
+    if (window.innerWidth > 950) {
+        document.body.innerHTML = "";
+
+        const msg = document.createElement('div');
+        msg.textContent = "This site only for mobile Devices.";
+        msg.style.textAlign = "center";
+        msg.style.padding = "50px";
+        msg.style.fontSize = "24px";
+        document.body.appendChild(msg);
+    }
+});
 function OpenloginInfoMenu() {
     var menu = document.getElementsByClassName('login-info-menu')[0];
     var barMenu = document.getElementsByClassName('fa-bars')[0];
