@@ -2,417 +2,54 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="https://kit.fontawesome.com/c64cf4433d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notification Demo</title>
 </head>
 
-    
 <body>
-    <div class="login-Container">
-        <div class="login-box">
-            <form id="loginForm">
-                <div class="login-Header">
-                    <h2>Telecall Login</h2>
-                </div>
-                <div class="logo-company">
-                    <img src="https://raw.githubusercontent.com/marutiflex/script/refs/heads/main/logo%20png.png">
-                    <h3>Maruti Flex Traders LLP</h3>
-                </div>
-                <div class="user-log-content">
-                    <label for="userID">User ID</label>
-                    <input type="number" required id="userID">
-                </div>
-                <div class="user-log-content">
-                    <label for="password">Password</label>
-                    <input type="password" required id="password">
-                </div>
-                <span id="login-Message" style="display: none;">Wrong credentials!</span>
-                <div class="user-log-content">
-                    <input type="submit" value="Submit">
-                </div>
-            </form>
-        </div>
-    </div>
-    <main style="display: none;">
-        <!-- Menu Login info -->
-        <div class="login-info-menu" style="left: -250px;">
-            <div class="login-info-header">
-                <p>New & Lost Client dashboard</p>
-                <!-- <p><i class="fa-solid fa-xmark"></i></p> -->
-            </div>
-            <div class="login-info-details">
-                <div class="login-info-user-details">
-                    <p><i class="fa-solid fa-user"></i> Name : </p>
-                    <p>Rabindra Kumar Sahoo</p>
-                </div>
-                <div class="login-info-user-details">
-                    <p><i class="fa-solid fa-location-dot"></i> Branch : </p>
-                    <p>Bangalore</p>
-                </div>
-                <div class="login-info-user-details">
-                    <p><i class="fa-solid fa-gear"></i> Role : </p>
-                    <p>Sales Executives</p>
-                </div>
-            </div>
-            <div class="login-info-logout">
-                <div class="login-info-users-logout">
-                    <button>Logout <i class="fa-solid fa-power-off"></i></button>
-                </div>
-            </div>
-        </div>
-        <!-- Filter Container -->
-        <div class="filter-container" style="right: -250px;">
-            <div class="filter-Section" id="planning-page-filter">
-                <div class="filter-container-Header">
-                    <p><i onclick="OpenFilter()" class="fa-solid fa-arrow-right"></i></p>
-                    <h3>Filter</h3>
-                </div>
-                <div class="filter-container-divs">
-                    <label for="PartyNamefilterplanning">Party Name</label>
-                    <input type="text" id="PartyNamefilterplanning">
-                </div>
-                <div class="filter-container-divs">
-                    <label for="CurrentStatusfilterplanning">Current Status</label>
-                    <select name="CurrentStatusfilterplanning" id="CurrentStatusfilterplanning">
-                        <option value=""></option>
-                        <option>Required Later</option>
-                        <option>Not Interested</option>
-                        <option>Lead Dead</option>
-                        <option>Could not Contact</option>
-                    </select>
-                </div>
-                <div class="filter-container-divs">
-                    <label for="priorityfilterplanning">Current Status</label>
-                    <select name="priorityfilterplanning" id="priorityfilterplanning">
-                        <option value=""></option>
-                        <option>Today</option>
-                        <option>Yesterday</option>
-                        <option>Last 3 Days</option>
-                        <option>Tomorrow</option>
-                        <option>This Week</option>
-                        <option>Next Week</option>
-                        <option>This Month</option>
-                        <option>Upcoming</option>
-                    </select>
-                </div>
+  <button id="btn">Click Me</button>
 
-                <div class="filterr-button">
-                    <button>Reset</button>
-                    <button>Done</button>
-                </div>
-            </div>
-            <div class="filter-Section" id="history-page-filter" style="display: none;">
-                <div class="filter-container-Header">
-                    <p><i onclick="OpenFilter()" class="fa-solid fa-arrow-right"></i></p>
-                    <h3>Filter</h3>
-                </div>
-                <div class="filter-container-divs">
-                    <label for="PartyNamefilterhistory">Party Name</label>
-                    <input type="text" id="PartyNamefilterhistory">
-                </div>
-                <div class="filter-container-divs">
-                    <label for="CurrentStatusfilterhistory">Current Status</label>
-                    <select name="CurrentStatusfilterhistory" id="CurrentStatusfilterhistory">
-                        <option value=""></option>
-                        <option>Required Later</option>
-                        <option>Not Interested</option>
-                        <option>Lead Dead</option>
-                        <option>Could not Contact</option>
-                    </select>
-                </div>
-                <div class="filter-container-divs">
-                    <label for="priorityfilterhistory">Current Status</label>
-                    <select name="priorityfilterhistory" id="priorityfilterhistory">
-                        <option value=""></option>
-                        <option>Today</option>
-                        <option>Yesterday</option>
-                        <option>This Week</option>
-                        <option>Last Week</option>
-                        <option>This Month</option>
-                        <option>Last Month</option>
-                    </select>
-                </div>
+  <script>
+    var btn = document.querySelector('#btn');
 
-                <div class="filterr-button">
-                    <button>Reset</button>
-                    <button>Done</button>
-                </div>
-            </div>
-        </div>
-        <!-- Menulist -->
-        <div class="menu">
-            <ul>
-                <li onclick="NavPages('planning-page')" id="planning-page_menu_nav" class="active"><a
-                        href="#">Planning</a></li>
-                <li onclick="NavPages('history-page')" id="history-page_menu_nav"><a href="#">History</a></li>
-            </ul>
-        </div>
-        <!-- Header -->
-        <div class="header">
-            <div class="header-left">
-                <p onclick="OpenloginInfoMenu()"><i class="fa-solid fa-bars"></i></p>
-                <p id="pageName">Planning Report</p></i>
-            </div>
-            <div class="header-right"><i class="fa-solid fa-rotate" onclick="FetchData()"></i><i onclick="OpenFilter()"
-                    class="fa-solid fa-filter"></i> </div>
-        </div>
-        <!-- Content -->
-        <div class="content">
-            <div class="planning-page" id="planning-page">
+    btn.addEventListener('click', function () {
+      Notification.requestPermission().then(function (r) {
+        if (r === "granted") {
+          sendNotification('Welcome to Portal', 'Your notification has been activated!');
+        }
+      });
+    });
 
-                <div class="Container-details">
-                    <div class="Container-top">
-                        <div class="Container-top-left">
-                            <p>Xyz Company : Yogesh</p>
-                        </div>
-                        <div class="Container-top-right">
-                            <p onclick="updateForm('TrackingID')"><i class="fa-solid fa-square-pen"></i></p>
-                        </div>
-                    </div>
-                    <div class="Container-bottom">
-                        <div class="Container-bottom-left">
-                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
-                            <p><i class="fa-solid fa-phone"></i></p>
-                            <p><i class="fa-brands fa-square-whatsapp"></i></p>
-                            <p>15-June-2025</p>
-                        </div>
-                        <div class="Container-bottom-right">
-                            <p>Required Later</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="Container-details">
-                    <div class="Container-top">
-                        <div class="Container-top-left">
-                            <p>Xyz Company : Yogesh</p>
-                        </div>
-                        <div class="Container-top-right">
-                            <p onclick="updateForm('TrackingID')"><i class="fa-solid fa-square-pen"></i></p>
-                        </div>
-                    </div>
-                    <div class="Container-bottom">
-                        <div class="Container-bottom-left">
-                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
-                            <p><i class="fa-solid fa-phone"></i></p>
-                            <p><i class="fa-brands fa-square-whatsapp"></i></p>
-                            <p>15-June-2025</p>
-                        </div>
-                        <div class="Container-bottom-right">
-                            <p>Required Later</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="Container-details">
-                    <div class="Container-top">
-                        <div class="Container-top-left">
-                            <p>Xyz Company : Yogesh</p>
-                        </div>
-                        <div class="Container-top-right">
-                            <p onclick="updateForm('TrackingID')"><i class="fa-solid fa-square-pen"></i></p>
-                        </div>
-                    </div>
-                    <div class="Container-bottom">
-                        <div class="Container-bottom-left">
-                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
-                            <p><i class="fa-solid fa-phone"></i></p>
-                            <p><i class="fa-brands fa-square-whatsapp"></i></p>
-                            <p>15-June-2025</p>
-                        </div>
-                        <div class="Container-bottom-right">
-                            <p>Required Later</p>
-                        </div>
-                    </div>
-                </div>
+    function sendNotification(head, body) {
+      new Notification(head, {
+        body: body,
+        icon: "https://github.com/marutiflex/Home/blob/main/Saraf%20Logo.png?raw=true",
+      });
 
+      // Vibration
+      if (navigator.vibrate) {
+        navigator.vibrate([200, 100, 200]);
+      }
+    }
 
-            </div> <!--  planning-page close Here -->
-            <div class="history-page" id="history-page" style="display: none;">
-                <div class="Container-details">
-                    <div class="Container-top">
-                        <div class="Container-top-left">
-                            <p>Xyz Company : Yogesh</p>
-                        </div>
-                        <div class="Container-top-right">
-                            <p>Call</p>
-                        </div>
-                    </div>
-                    <div class="Container-bottom">
-                        <div class="Container-bottom-left">
-                            <p>15-June-2025</p>
-                            <p>16-June-2025</p>
-                            <p>Required Later</p>
-                        </div>
-                        <div class="Container-bottom-right">
-                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
-                        </div>
-                    </div>
-                    <div class="container-conversation">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, a?Lorem ipsum dolor sit amet.
-                        </p>
-                    </div>
-                </div>
-                <div class="Container-details">
-                    <div class="Container-top">
-                        <div class="Container-top-left">
-                            <p>Abc Company : Karthik</p>
-                        </div>
-                        <div class="Container-top-right">
-                            <p>Call</p>
-                        </div>
-                    </div>
-                    <div class="Container-bottom">
-                        <div class="Container-bottom-left">
-                            <p>15-June-2025</p>
-                            <p>16-June-2025</p>
-                            <p>Required Later</p>
-                        </div>
-                        <div class="Container-bottom-right">
-                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
-                        </div>
-                    </div>
-                    <div class="container-conversation">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, a?Lorem ipsum dolor sit amet.
-                        </p>
-                    </div>
-                </div>
-                <div class="Container-details">
-                    <div class="Container-top">
-                        <div class="Container-top-left">
-                            <p>Mnc Company : Yogesh</p>
-                        </div>
-                        <div class="Container-top-right">
-                            <p>Call</p>
-                        </div>
-                    </div>
-                    <div class="Container-bottom">
-                        <div class="Container-bottom-left">
-                            <p>15-June-2025</p>
-                            <p>16-June-2025</p>
-                            <p>Lead Dead</p>
-                        </div>
-                        <div class="Container-bottom-right">
-                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
-                        </div>
-                    </div>
-                    <div class="container-conversation">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, a?Lorem ipsum dolor sit amet.
-                        </p>
-                    </div>
-                </div>
-                <div class="Container-details">
-                    <div class="Container-top">
-                        <div class="Container-top-left">
-                            <p>Pqr Company : Yogesh</p>
-                        </div>
-                        <div class="Container-top-right">
-                            <p>Call</p>
-                        </div>
-                    </div>
-                    <div class="Container-bottom">
-                        <div class="Container-bottom-left">
-                            <p>15-June-2025</p>
-                            <p>16-June-2025</p>
-                            <p>Not Interested</p>
-                        </div>
-                        <div class="Container-bottom-right">
-                            <p><i onclick="openModalPendinginfo('Party Name')" class="fa-solid fa-circle-info"></i></p>
-                        </div>
-                    </div>
-                    <div class="container-conversation">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum, a?Lorem ipsum dolor sit amet.
-                        </p>
-                    </div>
-                </div>
+    let notification;
 
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === "hidden") {
+        notification = new Notification('Getback', {
+          body: 'You have not completed Yet All the Task, Please get back Soon!',
+          icon: "https://github.com/marutiflex/Home/blob/main/Saraf%20Logo.png?raw=true",
+        });
 
-
-            </div> <!--  History-page close Here -->
-        </div>
-    </main>
-    <div class="modal-Box" style="left: -100dvh;">
-        <div class="modal-container" id="planning-Container-info">
-            <div class="modal-content-header">
-                <h3>Pqr Company</h3>
-            </div>
-            <div class="modal-content-details">
-                <div class="modal-content-data">
-                    <label><i class="fa-solid fa-phone"></i> Contact : </label>
-                    <p>9113075249</p>
-                </div>
-                <div class="modal-content-data">
-                    <label><i class="fa-solid fa-circle-chevron-right"></i> Current Status : </label>
-                    <p>Required Later</p>
-                </div>
-                <div class="modal-content-data">
-                    <label><i class="fa-solid fa-star"></i> Priority : </label>
-                    <p>1st Priority</p>
-                </div>
-                <div class="modal-content-data">
-                    <label><i class="fa-solid fa-gear"></i> Lead Type : </label>
-                    <p>Lost</p>
-                </div>
-                <div class="modal-content-data">
-                    <label><i class="fa-solid fa-calendar-days"></i> Last Contact : </label>
-                    <p>15-May-2025</p>
-                </div>
-                <div class="modal-content-data">
-                    <label><i class="fa-solid fa-headphones"></i> Conversation : </label>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor aliquam nisi, autem nulla vel
-                        porro magni natus eveniet incidunt a?</p>
-                </div>
-                <div class="modal-content-data">
-                    <label><i class="fa-solid fa-location-dot"></i> Address : </label>
-                    <p>FLOOR -1, 6-A1, GANDHI NAGAR, DAINIK SHIVNERI MARG, WORLI, MUMBAI, Mumbai, Maharashtra, 400018
-                    </p>
-                </div>
-            </div>
-            <div onclick="updateForm('TrackingID')" class="update-modal"><button>Update</button></div>
-            <div onclick="closeModal()" class="close-modal"><i class="fa-solid fa-xmark"></i></div>
-        </div>
-    </div>
-    <div class="modal-Box" style="left: -100dvh;">
-        <div class="modal-container" id="formUpdate">
-            <form>
-                <div class="modal-content-header">
-                    <h3>Pqr Company</h3>
-                </div>
-                <div class="modal-content-details">
-                    <div class="form-update-container">
-                        <label for="status_update">Status</label>
-                        <select name="status_update" required id="status_update">
-                            <option value=""></option>
-                            <option>Lead Generated</option>
-                            <option>Lead Converted</option>
-                            <option>Could not Contact</option>
-                            <option>Required Later</option>
-                            <option>Lead Dead</option>
-                        </select>
-                    </div>
-                    <div class="form-update-container">
-                        <label for="Contact_type_update">Contact Type</label>
-                        <select name="Contact_type_update" required id="Contact_type_update">
-                            <option>Call</option>
-                            <option>Visit</option>
-                        </select>
-                    </div>
-                    <div class="form-update-container">
-                        <label for="Conversation_update">Conversation</label>
-                        <textarea name="Conversation_update" required id="Conversation_update"></textarea>
-                    </div>
-                    <div class="form-update-container">
-                        <label for="nextFollowup_update">Next Followup</label>
-                        <input type="date" id="nextFollowup_update" required min="2025-06-19" max="2025-06-29">
-                    </div>
-                </div>
-                <div class="update-modal"><button type="submit">Submit</button></div>
-                <div onclick="closeModal()" class="close-modal"><i class="fa-solid fa-xmark"></i></div>
-            </form>
-        </div>
-    </div>
-    <script src="script.js"></script>
+        if (navigator.vibrate) {
+          navigator.vibrate([200, 100, 200]);
+        }
+      } else if (notification) {
+        notification.close();
+      }
+    });
+  </script>
 </body>
 
 </html>
